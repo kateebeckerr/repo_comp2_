@@ -1,0 +1,33 @@
+---
+title: "compday1sesh2"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+```{r}
+library(janitor)
+library(tidyverse)
+
+```
+
+```{r}
+chlorophyll <- read_csv(here::here("analysis", "toolik_chlorophyll copy.csv"), na = c(".", "missing")) %>% 
+  clean_names() |>
+  rename(chl_a = active_chl_a_ug_l)
+
+view(chlorophyll)
+```
+
+```{r}
+#add levels +
+# piping outline of code into another use pipe
+#positive skewed 
+#creating file paths using command lines/ infrastructure through R, finder, and command line also data wrangling tools
+
+ggplot(data = chlorophyll, aes(x = chl_a)) +
+  geom_histogram()
+```
+
